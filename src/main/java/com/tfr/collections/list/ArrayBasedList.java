@@ -1,5 +1,6 @@
 package com.tfr.collections.list;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -24,24 +25,46 @@ public class ArrayBasedList<T> implements List<T> {
         this.elements = (T[]) new Object[capacity];
     }
 
+    private void enlarge() {
+        int newLength = elements.length + originalCapacity;
+        T[] newArray = (T[]) new Object[newLength];
+        System.arraycopy(elements, 0, newArray, 0, elements.length);
+        elements = newArray;
+    }
+
+    private int find(T element) {
+        for(int i=0; i<numberOfElements; i++) {
+            if(elements[i].equals(element)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public boolean add(T element) {
-        return false;
+        if(elements.length == numberOfElements) {
+            enlarge();
+        }
+        elements[numberOfElements] = element;
+        numberOfElements++;
+        return true;
     }
 
     @Override
     public T get(T target) {
-        return null;
+        return elements[find(target)];
     }
 
     @Override
     public boolean contains(T target) {
-        return false;
+        return find(target) > -1;
     }
 
     @Override
     public boolean remove(T target) {
-        return false;
+        int index = find(target);
+        return remove(index) != null;
     }
 
     @Override
@@ -51,17 +74,27 @@ public class ArrayBasedList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return numberOfElements == 0;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return numberOfElements;
     }
 
     @Override
     public void add(int index, T element) {
-
+        if(index<0 || index>=getSize()) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index + " passed to add method.");
+        }
+        if(elements.length == numberOfElements) {
+            enlarge();
+        }
+        for(int i=numberOfElements; i>index; i--) {
+            elements[i] = elements[i-1];
+        }
+        elements[index] = element;
+        numberOfElements++;
     }
 
     @Override
@@ -76,17 +109,29 @@ public class ArrayBasedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        if(index<0 || index>=getSize()) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index + " passed to get method.");
+        }
+        return elements[index];
     }
 
     @Override
     public int indexOf(T element) {
-        return 0;
+        return find(element);
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        if(index<0 || index>=getSize()) {
+            throw new IndexOutOfBoundsException("Illegal index of " + index + " passed to remove method.");
+        }
+        T hold = elements[index];
+        for(int i=index; i<numberOfElements-1; i++) {
+            elements[i] = elements[i+1];
+        }
+        elements[numberOfElements-1] = null;
+        numberOfElements--;
+        return hold;
     }
 
     @Override
@@ -110,11 +155,10 @@ public class ArrayBasedList<T> implements List<T> {
         };
     }
 
-    private void enlarge() {
-
-    }
-
-    private int find(T element) {
-        return 0;
+    @Override
+    public String toString() {
+        return "ArrayBasedList{" +
+                "elements=" + Arrays.toString(elements) +
+                '}';
     }
 }

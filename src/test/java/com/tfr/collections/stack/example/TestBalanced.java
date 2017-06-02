@@ -1,4 +1,4 @@
-package com.tfr.collections.stack.inuse;
+package com.tfr.collections.stack.example;
 
 import org.junit.Before;
 import org.junit.Test;

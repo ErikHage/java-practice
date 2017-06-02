@@ -7,12 +7,13 @@ package com.tfr.collections.tree;
 public class BSTNode<T> {
 
     private T info;
-
     private BSTNode<T> left;
     private BSTNode<T> right;
 
     public BSTNode(T info) {
         this.info = info;
+        this.right = null;
+        this.left = null;
     }
 
     public T getInfo() {

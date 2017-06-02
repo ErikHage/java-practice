@@ -1,10 +1,9 @@
-package com.tfr.collections.stack.inuse;
+package com.tfr.collections.stack.example;
 
 import com.tfr.collections.stack.StackOverflowException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import static org.junit.Assert.assertEquals;
 
 /**

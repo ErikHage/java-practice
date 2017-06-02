@@ -1,4 +1,4 @@
-package com.tfr.collections.stack.inuse;
+package com.tfr.collections.stack.example;
 
 import com.tfr.collections.stack.ArrayBoundedStack;
 import com.tfr.collections.stack.Stack;

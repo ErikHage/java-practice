@@ -21,5 +21,4 @@ public interface iBinarySearchTree<T> extends Collection<T>, Iterable<T> {
 
     Iterator<T> getIterator(Traversal traversal);
 
-
 }

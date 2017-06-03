@@ -1,0 +1,9 @@
+6/2/2017:2.0
+Bench Free: 60;10 65;10,8
+Obliques: 65;10,10,10
+Pull ups: 10,8,8
+Incline Bench: 135;10,10,10
+Bent row mach: 100;10 115;10,8
+Chest Fly: 30;10,10 35;10
+Lawnmowers: 60;8,8,8
+Plank: 60,60,60

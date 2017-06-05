@@ -6,8 +6,8 @@ package com.tfr.ideas.exercise;
  */
 public class ExerciseSet {
 
-    private int weight;
-    private int reps;
+    protected double weight;
+    protected double reps;
 
     public ExerciseSet() {
 
@@ -18,19 +18,19 @@ public class ExerciseSet {
         this.reps = reps;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public int getReps() {
+    public double getReps() {
         return reps;
     }
 
-    public void setReps(int reps) {
+    public void setReps(double reps) {
         this.reps = reps;
     }
 

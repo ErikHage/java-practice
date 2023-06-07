@@ -1,0 +1,29 @@
+previous iterations
+
+    /**
+     *
+     *
+     * @param asOf - Date for which to calculate the cumulative return
+     * @param base - Date of start of cumulative return calculation
+     * @return Double - The Cumulative Return from the base date to the asof date
+     */
+    Double findCumReturn(Date asOf, Date base) {
+        if(asOf.before(base)) {
+            return null; //or return 0 if you want to use primitive double as the return type
+        }
+
+        double cumReturn = 1;
+        Iterator<Date> iterator = dailyReturns.keySet().iterator();
+        Date currentDate;
+
+        while(iterator.hasNext()) {
+            currentDate = iterator.next();
+            Double dailyReturn = dailyReturns.get(currentDate);
+
+            if(currentDate.after(base) && currentDate.before(asOf)) {
+                cumReturn = cumReturn * (1 + dailyReturn);
+            }
+        }
+
+        return Math.floor((cumReturn-1) * 1e5) / 1e5;
+    }
